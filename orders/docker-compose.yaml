@@ -2,26 +2,26 @@ version: "3"
 
 services:
   app:
-    build: ./
+    build: .
     command: npm start
     ports:
-      - "3002:3000"
+      - "3005:3000"
     volumes:
       - .:/usr/app
     depends_on:
-      - "mysql"
+      - "mongo"
     networks:
       - backend
 
-  mysql:
+  mongo:
     container_name: "mongo-node"
     platform: linux/amd64
-    image: mongo
+    image: mongo:4.4.14
     ports:
       - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
     networks:
       - backend
 

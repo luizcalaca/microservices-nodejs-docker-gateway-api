@@ -2,10 +2,10 @@ version: "3"
 
 services:
   app:
-    build: ./
+    build: .
     command: npm start
     ports:
-      - "3033:3000"
+      - "3006:3000"
     volumes:
       - .:/usr/app
     depends_on:
