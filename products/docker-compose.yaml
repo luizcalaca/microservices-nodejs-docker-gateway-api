@@ -5,7 +5,7 @@ services:
     build: ./
     command: npm start
     ports:
-      - "3035:3000"
+      - "3033:3000"
     volumes:
       - .:/usr/app
     depends_on:
