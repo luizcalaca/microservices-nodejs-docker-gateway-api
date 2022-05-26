@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  app:
+    build: ./
+    command: npm start
+    ports:
+      - "3035:3000"
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - "mysql"
+    networks:
+      - backend
+
+  mysql:
+    container_name: "data-node"
+    platform: linux/amd64
+    image: mysql:5.7.31
+    command: --default-authentication-plugin=mysql_native_password --sql_mode=NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER --explicit_defaults_for_timestamp
+    restart: always
+    ports:
+      - "3308:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=America/Sao_Paulo
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

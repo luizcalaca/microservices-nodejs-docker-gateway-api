@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  app:
+    build: ./
+    command: npm start
+    ports:
+      - "3036:3000"
+    volumes:
+      - .:/usr/app
+    depends_on:
+      - "mysql"
+    networks:
+      - backend
+
+  mysql:
+    container_name: "mongo-node"
+    platform: linux/amd64
+    image: mongo
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
