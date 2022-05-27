@@ -1,20 +1,20 @@
 # How to run the microservices throgh API Gateway
 
-## products microservice
+## products microservice with MySQL
 
 ```
 cd /products
 docker-compose up
 ```
 
-## orders microservice
+## orders microservice with MongoDB
 
 ```
 cd /orders
 docker-compose up
 ```
 
-## API Gateway
+## API Gateway Pattern Architecture
 
 ```
 cd /api-gateway
